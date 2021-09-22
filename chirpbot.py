@@ -51,7 +51,7 @@ def check_mentions(api, since_id):
         if not tweet.user.following:
             tweet.user.follow()
         twitterrequester = tweet.user.screen_name
-        predictions = json.loads(partypredict(twitterrequester))
+        predictions = json.loads(jsonify(partypredict(twitterrequester)))
         print(predictions["Christlich Demokratische Union Deutschlands"])
         print(prettyresults)
         tweetstatus = "@" + str(twitterrequester) + " deine Übereinstimmung mit den folgenden Parteien (%): " + str(prettyresults)
