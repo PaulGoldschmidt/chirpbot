@@ -41,7 +41,8 @@ def check_mentions(api, since_id):
 
         if not tweet.user.following:
             tweet.user.follow()
-        tweetstatus = "@" + str(tweet.user.name) + " deine Übereinstimmung mit den folgenden Parteien (%): "
+        api.lookup_users(
+        tweetstatus = "@" + str(tweet.user.screen_name) + " deine Übereinstimmung mit den folgenden Parteien (%): "
         api.update_status(status=tweetstatus, in_reply_to_status_id=tweet.id, )
     return new_since_id
 
