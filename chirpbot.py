@@ -43,7 +43,7 @@ def check_mentions(api, since_id):
             tweet.user.follow()
         tweetstatus = "@" + str(tweet.user.screen_name) + " deine Übereinstimmung mit den folgenden Parteien (%): "
         api.update_status(
-                status="Please reach us via DM",
+                status=tweetstatus,
                 in_reply_to_status_id=tweet.id,
             )
     return new_since_id
