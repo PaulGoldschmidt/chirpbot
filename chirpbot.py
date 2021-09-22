@@ -51,7 +51,7 @@ def check_mentions(api, since_id):
         if not tweet.user.following:
             tweet.user.follow()
         twitterrequester = tweet.user.screen_name
-        prettyresults = predict_party(twitterrequester)
+        prettyresults = partypredict(twitterrequester)
         tweetstatus = "@" + str(twitterrequester) + " deine Übereinstimmung mit den folgenden Parteien (%): " + str(prettyresults)
         api.update_status(
                 status=tweetstatus,
