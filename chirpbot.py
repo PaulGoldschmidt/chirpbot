@@ -31,7 +31,7 @@ def create_api():
 
 def write_progress(progress_id):
     f = open("chirpbot_progress.txt", "r")
-    if int(f.read()) > progress_id:
+    if int(f.read()) > int(progress_id):
         f = open("chirpbot_progress.txt", "w")
         f.write(progress_id)
         f.close()
