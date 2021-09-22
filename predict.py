@@ -1,6 +1,6 @@
 import tweepy
 import sys
-import predict
+import predictsingle
 import statistics
 import json
 from datetime import datetime
@@ -54,7 +54,7 @@ def partypredict(twitter_handle):
         return dict({"success": False, "error": "Error while downloading Tweets, maybe 440?", "data": {}, "tweetsread": {0}})
 
     for tweet in tweets:
-        prediction = predict.predict(tweet)
+        prediction = predictsingle.predict(tweet)
         tweetsread = tweetsread + 1
         for key, value in prediction.items():
             if key not in predictions.keys():
