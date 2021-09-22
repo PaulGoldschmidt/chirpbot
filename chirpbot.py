@@ -60,7 +60,7 @@ def check_mentions(api, since_id):
         dielinke = int(predictions["Die Linke"]) * 100
         diegruenen = int(predictions["Bündnis 90/Die Grünen"]) * 100
         piraten = int(predictions["Piratenpartei Deutschland"]) * 100
-        prettyresults = "CDU: " + str(cdu[0:3]) + "SPD: " + str(spd[0:3]) + "FDP: " + str(fdp[0:3]) + "Die Linke: " + str(dielinke[0:3]) + "Die Grünen: " + str(diegruenen[0:3]) + "Piratenpartei: " + str(piraten[0:3]) + "AFD: " + str(afd[0:3])
+        prettyresults = "CDU: " + str(round(cdu, 3)) + "SPD: " + str(round(spd, 3)) + "FDP: " + str(round(fdp, 3)) + "Die Linke: " + str(round(dielinke, 3)) + "Die Grünen: " + str(round(diegruenen, 3)) + "Piratenpartei: " + str(round(piraten, 3)) + "AFD: " + str(round(afd, 3))
         print(prettyresults)
         tweetstatus = "@" + str(twitterrequester) + " deine Übereinstimmung mit den folgenden Parteien (%): " + str(prettyresults)
         api.update_status(
