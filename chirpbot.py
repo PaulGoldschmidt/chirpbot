@@ -36,7 +36,7 @@ def write_progress(progress_id):
         f.write(progress_id)
         f.close()
     f = open("chirpbot_progress.txt", "r")
-    return max(f.read(), progress_id)
+    return max(int(f.read()), int(progress_id))
 
 def check_mentions(api, since_id):
     logger.info("Retrieving mentions")
