@@ -28,7 +28,7 @@ def create_api():
     logger.info("API created")
     return api
 
-def check_mentions(api, keywords, since_id):
+def check_mentions(api, since_id):
     logger.info("Retrieving mentions")
     new_since_id = since_id
     for tweet in tweepy.Cursor(api.mentions_timeline,
