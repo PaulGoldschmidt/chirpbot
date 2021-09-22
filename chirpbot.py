@@ -3,7 +3,7 @@ import logging
 import json
 import time
 import os
-from predict_account import predict_party
+from predict import partypredict
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
