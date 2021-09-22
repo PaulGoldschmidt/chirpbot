@@ -36,25 +36,25 @@ def check_mentions(api, keywords, since_id):
         new_since_id = max(tweet.id, new_since_id)
         if tweet.in_reply_to_status_id is not None:
             continue
-        if any(keyword in tweet.text.lower() for keyword in keywords):
-            logger.info(f"Answering to {tweet.user.name}")
+        #if any(keyword in tweet.text.lower() for keyword in keywords):
+        logger.info(f"Answering to {tweet.user.name}")
 
-            if not tweet.user.following:
-                tweet.user.follow()
+        if not tweet.user.following:
+            tweet.user.follow()
 
-            api.update_status(
-                status="Please reach us via DM",
-                in_reply_to_status_id=tweet.id,
-            )
+        api.update_status(
+            status="Hallo, Welt! Hier könnte ihre politische Ausrichtung stehen.",
+            in_reply_to_status_id=tweet.id,
+        )
     return new_since_id
 
 def main():
     api = create_api()
     since_id = 1
     while True:
-        since_id = check_mentions(api, ["help", "support"], since_id)
+        since_id = check_mentions(api, since_id)
         logger.info("Waiting...")
-        time.sleep(60)
+        time.sleep(15)
 
 if __name__ == "__main__":
     main()
