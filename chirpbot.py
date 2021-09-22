@@ -52,6 +52,7 @@ def check_mentions(api, since_id):
             tweet.user.follow()
         twitterrequester = tweet.user.screen_name
         returneddata = partypredict(twitterrequester)
+        tweetsreadtotal = returneddata["tweetsread"]
         predictions = returneddata["data"]
         cdu = int(predictions["Christlich Demokratische Union Deutschlands"]) * 100
         afd = int(predictions["Alternative für Deutschland"]) * 100
@@ -60,8 +61,8 @@ def check_mentions(api, since_id):
         dielinke = int(predictions["Die Linke"]) * 100
         diegruenen = int(predictions["Bündnis 90/Die Grünen"]) * 100
         piraten = int(predictions["Piratenpartei Deutschland"]) * 100
-        print(cdu)
-        prettyresults = "CDU: " + str(round(cdu, 3)) + " | SPD: " + str(round(spd, 3)) + " | FDP: " + str(round(fdp, 3)) + " | Die Linke: " + str(round(dielinke, 3)) + " | Die Grünen: " + str(round(diegruenen, 3)) + " | Piratenpartei: " + str(round(piraten, 3)) + " | AFD: " + str(round(afd, 3))
+        print(predictions["Christlich Demokratische Union Deutschlands"])
+        prettyresults = "CDU: " + str(round(cdu, 3)) + " | SPD: " + str(round(spd, 3)) + " | FDP: " + str(round(fdp, 3)) + " | Die Linke: " + str(round(dielinke, 3)) + " | Die Grünen: " + str(round(diegruenen, 3)) + " | Piratenpartei: " + str(round(piraten, 3)) + " | AFD: " + str(round(afd, 3)) + ". Insgesamt wurden " + str(tweetsreadtotal) + " analysiert."
         print(prettyresults)
         tweetstatus = "@" + str(twitterrequester) + " deine Übereinstimmung mit den folgenden Parteien (%): " + str(prettyresults)
         api.update_status(
