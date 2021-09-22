@@ -3,6 +3,7 @@ import logging
 import json
 import time
 import os
+from predict_account import predict_party
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
@@ -41,7 +42,9 @@ def check_mentions(api, since_id):
 
         if not tweet.user.following:
             tweet.user.follow()
-        tweetstatus = "@" + str(tweet.user.screen_name) + " deine Übereinstimmung mit den folgenden Parteien (%): "
+        twitterrequester = tweet.user.screen_name
+        prettyresults = predict_party(twitterrequester)
+        tweetstatus = "@" + str(twitterrequester) + " deine Übereinstimmung mit den folgenden Parteien (%): " + str(prettyresults)
         api.update_status(
                 status=tweetstatus,
                 in_reply_to_status_id=tweet.id,
