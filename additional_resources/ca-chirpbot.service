@@ -1,0 +1,11 @@
+[Unit]
+Description=The Chirpanalytica forecast twitter bot
+
+[Service]
+Type=simple
+WorkingDirectory=/srv/chirpanalytica/chirpbot/de/
+ExecStart=/srv/chirpanalytica/chirpbot/de/chirpbot.py
+TimeoutSec=0
+StandardOutput=journal
+RemainAfterExit=no
+Restart=on-abort
