@@ -59,7 +59,7 @@ def check_mentions(api, since_id):
         dielinke = predictions["Die Linke"] * 100
         diegruenen = predictions["Bündnis 90/Die Grünen"] * 100
         piraten = predictions["Piratenpartei Deutschland"] * 100
-        prettyresults = "\n⬛ CDU: " + str(round(cdu, 3)) + "%\n🟥 SPD: " + str(round(spd, 3)) + "%\n🟨 FDP: " + str(round(fdp, 3)) + "%\n🟥 Die Linke: " + str(round(dielinke, 3)) + "%\n🟩 Die Grünen: " + str(round(diegruenen, 3)) + "%\n🟧 Piratenpartei: " + str(round(piraten, 3)) + "%\n🟦 AfD: " + str(round(afd, 3)) + "%\n\nInsgesamt haben wir " + str(tweetsreadtotal) + " Tweets von dir analysiert."
+        prettyresults = "\n⬛ CDU: " + str(round(cdu, 1)) + "%\n🟥 SPD: " + str(round(spd, 1)) + "%\n🟨 FDP: " + str(round(fdp, 1)) + "%\n🟥 Die Linke: " + str(round(dielinke, 1)) + "%\n🟩 Die Grünen: " + str(round(diegruenen, 1)) + "%\n🟧 Piratenpartei: " + str(round(piraten, 1)) + "%\n🟦 AfD: " + str(round(afd, 1)) + "%\n\nInsgesamt haben wir " + str(tweetsreadtotal) + " Tweets von dir analysiert."
         tweetstatus = "@" + str(twitterrequester) + " Deine Tweets stimmen so viel mit den den folgenden Parteien überein: " + str(prettyresults)
         with open('temp.txt', 'w') as t:
             t.write(tweetstatus)
