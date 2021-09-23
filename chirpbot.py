@@ -79,7 +79,8 @@ def check_mentions(api, since_id):
 def main():
     api = create_api()
     since_id = write_progress(1)
-    global exitonfirststart = False
+    global exitonfirststart 
+    exitonfirststart = False
     if since_id == 1:
         exitonfirststart = True
     logger.info("Chirpbot started, last Tweet ID: " + str(since_id))
