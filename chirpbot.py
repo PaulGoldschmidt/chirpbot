@@ -43,6 +43,8 @@ def check_mentions(api, since_id):
     new_since_id = since_id
     for tweet in tweepy.Cursor(api.mentions_timeline, since_id=since_id).items():
         new_since_id = write_progress(max(tweet.id, new_since_id))
+        if new_since_id == 1:
+            return None
         if tweet.in_reply_to_status_id is not None:
             continue
         logger.info(f"Answering to {tweet.user.name}")
