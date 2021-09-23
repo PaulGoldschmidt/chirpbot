@@ -7,6 +7,7 @@ from predict import partypredict
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
+exitonfirststart = False
 
 def create_api():
     with open('twittercredentials.json') as data_file:
@@ -79,7 +80,6 @@ def check_mentions(api, since_id):
 def main():
     api = create_api()
     since_id = write_progress(1)
-    exitonfirststart = False
     if since_id == 1:
         exitonfirststart = True
     logger.info("Chirpbot started, last Tweet ID: " + str(since_id))
