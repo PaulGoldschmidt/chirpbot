@@ -36,7 +36,7 @@ def write_progress(progress_id):
     print(readid)
     if readid > progress_id:
         f = open("chirpbot_progress.txt", "w")
-        f.write(progress_id)
+        f.write(str(progress_id))
         f.close()
     f = open("chirpbot_progress.txt", "r")
     return max(int(f.read()), int(progress_id))
