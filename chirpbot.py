@@ -32,13 +32,12 @@ def create_api():
 def write_progress(progress_id):
     f = open("chirpbot_progress.txt", "r")
     readid = int(f.read())
-    print(readid)
     if readid < progress_id:
         f = open("chirpbot_progress.txt", "w")
         f.write(str(progress_id))
         f.close()
         return progress_id
-    return progress_id
+    return readid
 
 def check_mentions(api, since_id):
     new_since_id = since_id
@@ -47,7 +46,6 @@ def check_mentions(api, since_id):
         if tweet.in_reply_to_status_id is not None:
             continue
         logger.info(f"Answering to {tweet.user.name}")
-
         if not tweet.user.following:
             tweet.user.follow()
         twitterrequester = tweet.user.screen_name
