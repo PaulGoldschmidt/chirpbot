@@ -77,7 +77,7 @@ def check_mentions(api, since_id):
 def main():
     api = create_api()
     since_id = write_progress(1)
-    print("Chirpbot started, last Tweet ID: " + str(since_id)
+    print("Chirpbot started, last Tweet ID: " + str(since_id))
     while True:
         since_id = check_mentions(api, since_id)
         time.sleep(15)
