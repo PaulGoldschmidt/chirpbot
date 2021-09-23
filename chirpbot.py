@@ -43,10 +43,6 @@ def check_mentions(api, since_id):
     new_since_id = since_id
     for tweet in tweepy.Cursor(api.mentions_timeline, since_id=since_id).items():
         new_since_id = write_progress(max(tweet.id, new_since_id))
-        if exitonfirststart == True:
-            logger.info("Seems to be first start of this programm, fetched id and skipping function.")
-            exitonfirststart = False
-            return new_since_id
         if tweet.in_reply_to_status_id is not None:
             continue
         logger.info(f"Answering to {tweet.user.name}")
@@ -79,10 +75,6 @@ def check_mentions(api, since_id):
 def main():
     api = create_api()
     since_id = write_progress(1)
-    global exitonfirststart 
-    exitonfirststart = False
-    if since_id == 1:
-        exitonfirststart = True
     logger.info("Chirpbot started, last Tweet ID: " + str(since_id))
     while True:
         since_id = check_mentions(api, since_id)
