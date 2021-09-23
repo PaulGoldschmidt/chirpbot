@@ -30,7 +30,6 @@ def create_api():
     return api
 
 def write_progress(progress_id):
-    print(progress_id)
     f = open("chirpbot_progress.txt", "r")
     readid = int(f.read())
     print(readid)
@@ -38,11 +37,10 @@ def write_progress(progress_id):
         f = open("chirpbot_progress.txt", "w")
         f.write(str(progress_id))
         f.close()
-    f = open("chirpbot_progress.txt", "r")
-    return max(int(f.read()), int(progress_id))
+        return progress_id
+    return progress_id
 
 def check_mentions(api, since_id):
-    logger.info("Retrieving mentions")
     new_since_id = since_id
     for tweet in tweepy.Cursor(api.mentions_timeline, since_id=since_id).items():
         new_since_id = write_progress(max(tweet.id, new_since_id))
@@ -79,9 +77,9 @@ def check_mentions(api, since_id):
 def main():
     api = create_api()
     since_id = write_progress(1)
+    print("Chirpbot started, last Tweet ID: " + str(since_id)
     while True:
         since_id = check_mentions(api, since_id)
-        logger.info("Waiting...")
         time.sleep(15)
 
 if __name__ == "__main__":
